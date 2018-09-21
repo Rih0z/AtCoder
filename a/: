@@ -1,0 +1,40 @@
+#include<iostream>
+
+int scanN(void );
+int readA(int n , int *a);
+
+
+int main(){
+  int j ;
+  int n  = scanN();
+  int a[n];
+  self::readA(a,n);
+
+  int count = 0 ;
+
+  return 0 ;
+}
+
+int scanN(void ){
+  static int n ;
+
+  if(std::scanf("%d",&n)){
+  }else{
+    std::printf("scanN error\n");
+    std::exit(1);
+  }
+
+  return n ;
+}
+int *readA(int *a , int n){
+  int i ; 
+  for (i =  0 ; i < n ; i++){
+    if(std::scanf("%d",&a[i])){
+    }else{
+      std::printf("readA error\n");
+      std::exit(1);
+    }
+  }
+  return a ;
+}
+
