@@ -6,23 +6,29 @@
 #include<iostream>
 #include<map>
 
-#define DEBUG false
+#define DEBUG true
 
 typedef long long ll;
 using namespace std;
 
-int scanN(void );
-void scanA(ll *a , int n);
-void intPrintf(int p);
-void llPrintN(ll *a,int n);
-void perSum(ll *a , ll *sum ,int n);
-ll countSumX( std::map<ll,ll> m,ll *sum,int n );
+int scanInt(void);
+string scanString(void);
 
-/*************  **************/
+void scanLlArr(ll *a , int n);
+void scanCharArr(char *string);
+
+void printInt(int p);
+void printLlArr(ll *a);
+void printCharArr(char *string);
+
+
+void perSum(ll *a , ll *sum ,int n);
+
+/*************Global variable  **************/
 int N ;
-ll A[200010];
-ll SUM[200010];
-std::map<ll,ll> M ;
+char str[26];
+std::map<char,int> M ;
+/*******************************/
 
 int main(){
   if (DEBUG){
@@ -30,15 +36,13 @@ int main(){
   }
   int i,j ;
 
-  N  = scanN();
-  scanA(A,N);
-
+  N= scanInt();
+  printInt(N);
   if (DEBUG){
     std::printf("******debug********\n");
 
     std::printf("******debug********\n");
   }
-  cout << countSumX( M , SUM, N) << endl;
   return 0 ;
 }
 
@@ -52,18 +56,16 @@ void perSum(ll *a , ll *sum ,int n){
 
 }
 /******** scan **************/
-int scanN(void ){
-  static int n ;
-
+int scanInt(void ){
+  int n ;
   if(std::scanf("%d",&n)){
   }else{
     std::printf("scanN error\n");
     std::exit(1);
   }
-
   return n ;
 }
-void scanA(ll *a , int n){
+void scanLlArr(ll *a , int n){
   int ireadA ; 
   for (ireadA =  0 ; ireadA < n ; ireadA++){
     if(std::scanf("%lld",&a[ireadA])){
@@ -73,8 +75,28 @@ void scanA(ll *a , int n){
     }
   }
 }
+
+string scanString(void){
+  string s ;
+  if(cin >> s){ 
+  }
+  else{
+    std::printf("scanString error\n");
+    std::exit(1);
+  }
+  return s;
+}
+
+void scanCharArr(char *string){
+  if(scanf("%s",string))
+  {}
+  else{
+    std::printf("scanCharStr error\n");
+    std::exit(1);
+  }
+}
 /************* print **************/
-void intPrintf(int p){
+void printInt(int p){
   if(std::printf("%d\n",p)){
   }else{
     std::printf("intPrintf Error\n");
@@ -82,9 +104,9 @@ void intPrintf(int p){
   }
 }
 
-void llPrintN(ll *a,int n){
+void printLlArr(ll *a){
   int i ;
-  for(i = 0 ; i < n ; i++){
+  for(i = 0 ; i < sizeof(a)/sizeof(ll) ; i++){
     if(std::printf("%lld ",a[i] )){
     }else{
       std::printf("intPrintN Error i = %d stopped \n",i);
@@ -92,4 +114,15 @@ void llPrintN(ll *a,int n){
     }
   }
   std::printf("\n");
+}
+void printCharArr(char *string){
+ for(int i = 0 ; i < sizeof(string)/sizeof(char); i++){
+   if(printf("%c",string[i])){
+     }
+   else{
+      std::printf("charStrPrint Error i = %d stopped \n",i);
+      std::exit(1);
+   }
+ }
+ printf("\n");
 }
