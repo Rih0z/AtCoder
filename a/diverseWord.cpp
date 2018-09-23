@@ -5,6 +5,9 @@
 
 #include<iostream>
 #include<map>
+#include <cstring>
+#include <vector>
+#include <algorithm>
 
 #define DEBUG false
 
@@ -30,50 +33,116 @@ void checkLetter(void);
 void setABC(void);
 void setABC2(void);
 void seekNextWord(void);
+void checkAlphabeticalOrder(void);
+void addNewWord(void);
 /*************Global variable  **************/
 int N ;
 char str[26];
+char short_str[26];
+char cutted_str[26];
+bool shortF = false;
+string maxw = "zyxwvutsrqponmlkjihgfedcba";
 std::map<char,int> M ;
 std::map<int,char> abc ;
 /*******************************/
 
 int main(){
+ const char *max = maxw.c_str();
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
   int i,j ;
-  setABC();
   scanCharArr(str);
-  checkLetter();
-  seekNextWord();
-  if (DEBUG){
-    std::printf("******debug********\n");
-
-    std::printf("******debug********\n");
+  if(strcmp(str,max))
+  {
+  }else{
+    printf("-1\n");
+    exit(0);
   }
+    setABC();
+    for(int i = 1 ; i<= 26 ; i++){
+      if(str[25]== abc[i])
+      {
+        shortF = true;
+        break;
+      }
+    }
+  if(shortF){
+    if(DEBUG)
+      printf("*******full length*********\n");
+    std::next_permutation(str);
+    checkAlphabeticalOrder();
+    if(DEBUG)
+      cout << short_str <<"\n";
+    addNewWord();
+  }else{
+    addNewWord();
+  }
+  if(shortF){
+    cout << short_str << "\n";
+  }else
   cout << str << "\n";
   return 0 ;
+}
+void addNewWord(void){
+  checkLetter();
+    seekNextWord();
+}
+void checkAlphabeticalOrder(void){
+  static int count = 0 ;
+  for(int i =1 ; i <= 26 ; i++){
+    if(str[i-1] == abc[i]){}
+    else{
+      for(int j = 0 ; j< i-1; j++)
+      {
+        if(j< i-2){
+          short_str[j] = str[j];
+        }
+        if(j<= i-2){
+          cutted_str[j] = str[j];
+        }
+      }
+      break;
+    }
+  }
+  if(DEBUG){
+    printf("切られたのは");
+    cout << cutted_str << "\n";
+    printf("です\n");
+  }
 }
 
 void seekNextWord()
 {
   int i ; 
   for(i = 1; i <= 26 ; i++){
-      if(M.find(abc[i]) ==M.end())
-      {
+    if(M.find(abc[i]) ==M.end())
+    {
+      if(DEBUG){
+        printf("seekNextWord 追加するのは");
         printChar(abc[i]);
+      }
+      if(shortF){
+        sprintf(short_str,"%s%c",short_str,abc[i]);
+      }else
         sprintf(str,"%s%c",str,abc[i]);
-        break;
-      }
-      else{
-      }
+      break;
+    }
+    else{
+    }
   }
 }
 void checkLetter(void){
   int i ;
   M[0] = 0 ;
-  for (i = 1 ; i <= sizeof(str)/sizeof(char) ; i++){
+  if(shortF){
+    for (i = 1 ; i <= sizeof(cutted_str)/sizeof(char) ; i++){
+      M[cutted_str[i-1]] = i ;
+    }
+  }else{
+    for (i = 1 ; i <= sizeof(str)/sizeof(char) ; i++){
       M[str[i-1]] = i ;
+    }
   }
 }
 void setABC2(void){
