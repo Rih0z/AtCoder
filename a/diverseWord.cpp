@@ -5,6 +5,7 @@
 
 #include<iostream>
 #include<map>
+#include <string>
 #include <cstring>
 #include <vector>
 #include <algorithm>
@@ -70,23 +71,40 @@ int main(){
   if(shortF){
     if(DEBUG)
       printf("*******full length*********\n");
-    std::next_permutation(str);
-    checkAlphabeticalOrder();
+    string s = string(str);
+    string sorg = string(str);
+    int dif ;
+    std::next_permutation(s.begin(),s.end());
+    const char *cst = s.c_str();
+    const char *cstorg = sorg.c_str();
+    for( int k = 0 ; k < 26 ; k++){
+     if ( strncmp(cst,cstorg,k) != 0){
+        dif = k ; 
+        break;
+     }
+    }
+
+    strncpy(short_str,cst,dif);
+    if(DEBUG){
+      printf("*******next_permutation*********\n");
+      cout << s << "\n";
+    }
+    //    checkAlphabeticalOrder();
     if(DEBUG)
       cout << short_str <<"\n";
-    addNewWord();
+    //    addNewWord();
   }else{
     addNewWord();
   }
   if(shortF){
-    cout << short_str << "\n";
+     cout << short_str << "\n";
   }else
-  cout << str << "\n";
+    cout << str << "\n";
   return 0 ;
 }
 void addNewWord(void){
   checkLetter();
-    seekNextWord();
+  seekNextWord();
 }
 void checkAlphabeticalOrder(void){
   static int count = 0 ;
