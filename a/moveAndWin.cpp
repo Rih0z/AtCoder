@@ -6,7 +6,7 @@
 #include<iostream>
 #include<map>
 
-#define DEBUG true
+#define DEBUG false
 
 typedef long long ll;
 using namespace std;
@@ -26,15 +26,21 @@ void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
 int N ;
-char str[26];
-std::map<char,int> M ;
+int a,b;
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-  int i,j ;
+  cin >> N ; 
+  cin >> a ; 
+  cin >> b ;
+  if((a-b) %2 == 0) {
+    cout << "Alice" <<  '\n';
+  }else{
+    cout << "Borys\n" << '\n';   
+  }
 
   if (DEBUG){
     std::printf("******debug********\n");
