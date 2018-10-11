@@ -1,12 +1,24 @@
 /*******************************
  * written by Koki Riho
  * Rih0z https://github.com/Rih0z
+ * the base of this program is 
+ * https://www.youtube.com/watch?v=gdQxKESnXKs
+ * written by chokudai
  *******************************/
 
 #include<iostream>
 #include<map>
+#include<vector>
+#include<string>
 
-#define DEBUG true
+#define DEBUG false
+
+#define FOR(i , a, b) for(size_t i = a ; i < b ; i++ )
+#define REP(i,b) FOR(i , 0 , b)
+#define RFOR(i,a,b) for(size_t i = a-1 ; i >= b ; i--)
+#define RREP(i,a) RFOR(i,a,0)
+
+
 
 typedef long long ll;
 using namespace std;
@@ -25,17 +37,35 @@ void printCharArr(char *string);
 void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
-int N ;
-char str[26];
-std::map<char,int> M ;
+string S,T ;
+
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-  int i,j ;
 
+  cin >> S >> T ;
+  vector<int> start(26,-1) ;
+  vector<int> goal(26,-1) ;
+
+  REP(i,S.size()){
+    int a = S[i] - 'a' ;
+    int b = T[i] - 'a' ;
+
+    if( start[a] != -1 || goal[b] != -1  ){
+      if(start[a] != b || goal[b] != a  ){
+        cout << "No" << endl;
+        return 0 ;
+      }
+    }else{
+
+    start[a] = b ;
+    goal[b] = a ;
+    }
+  }
+  cout << "Yes" << endl ;
   if (DEBUG){
     std::printf("******debug********\n");
 
