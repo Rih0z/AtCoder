@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -46,6 +45,43 @@ int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
+  int count = 0 ;
+  cin >> N ;
+  int  n7 ,n4 ;
+  int ans = 0;
+  if(N%4==0 || N%7 ==0 ||N%11 == 0){
+    cout << "Yes" << endl;
+    return 0 ;
+  }else {
+    n7 = N ;
+    n4 = N ;
+    while(n7 > 0 ){
+      n7 = n7 -7 ;
+      if(n7 > 0 ){
+        if(n7%4==0 || n7%7 ==0 ||n7%11 == 0){
+          cout << "Yes" << endl;
+          return 0 ;
+        }
+      }
+    }
+    while(n4 > 0 ){
+      n4 = n4 -4 ;
+      if(n4 > 0 ){
+        if(n4%4==0 || n4%7 ==0 ||n4%11 == 0){
+          cout << "Yes" << endl;
+          return 0 ;
+        }
+      }
+    }
+    n7 += 7;
+    n4 += 4 ;
+    if(n7%4 == 0 ){
+      cout << "Yes" << endl;
+      return 0 ;
+    }
+
+  }
+  cout << "No" << endl;
 
   if (DEBUG){
     std::printf("******debug********\n");

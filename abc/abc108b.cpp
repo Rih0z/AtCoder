@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -37,7 +36,7 @@ void printCharArr(char *string);
 void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
-int N ;
+int x1,y1,x2,y2,x3,y3,x4,y4 ;
 char str[26];
 std::map<char,int> M ;
 /*******************************/
@@ -46,7 +45,19 @@ int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
+  cin >> x1 >> y1 >> x2 >> y2 ;
+  //右下
+  int difx = x2-x1;
+  int dify = y2 - y1;
+  int x = x2 ;
+  int y = y2 ;
+  REP(i,2){
+    swap(difx,dify);
+    difx = -difx ;
+    x += difx ;
+    y += dify ;
+    cout << x << " " << y<< endl;
+  }
   if (DEBUG){
     std::printf("******debug********\n");
 

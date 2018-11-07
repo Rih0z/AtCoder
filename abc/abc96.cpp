@@ -47,6 +47,40 @@ int main(){
     std::printf("******debug mode********\n");
   }
 
+  int ans ; 
+  int H,W ;
+  cin >> H >> W ;
+  string hei[H];
+  bool c[W] ;
+  REP(i,W){
+    c[i] = false ;
+  }
+  REP(i,H){
+    cin >> hei[i];
+  }
+  int dx[4] = {1,-1,0,0};
+  int dy[4] = {0,0,1,-1};
+  :wq
+  REP(i,H){
+    REP(j,W){
+      if(S[i][j] == "#")
+      {
+        if(j+2 == W){
+          c[j]= true ;
+          continue;
+        }
+        if(S[i][j+1] == "#"){
+          S[i][j] = ".";
+          S[i][j+1] = ".";
+          j++;
+          continue;
+        }else{
+          c[W] =true;
+        }
+      }
+
+    }
+  }
   if (DEBUG){
     std::printf("******debug********\n");
 

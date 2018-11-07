@@ -11,7 +11,7 @@
 #include<algorithm>
 #include<cmath>
 
-#define DEBUG false
+#define DEBUG true
 
 #define FOR(i , a, b) for(size_t i = a ; i < b ; i++ )
 #define REP(i,b) FOR(i , 0 , b)
@@ -40,16 +40,55 @@ void perSum(ll *a , ll *sum ,int n);
 int N ;
 char str[26];
 std::map<char,int> M ;
+int a,b,a1,b1;
+
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
+  int cnt9 = 0;
+  int cnt6 = 0 ;
+  int ans = 0 ;
+  int times = 0 ;
+  cin >> N ;
+  while(N > 5 ){
+    for(int i= 1;; i++){
+      if(N >= pow(9,i))
+      {
+        cnt9++;
+      }
+      else{
+        break;
+      }
+    }
+    if(cnt9 >0){
+      times = N/pow(9,cnt9);
+      ans += times;
+      N -= pow(9,cnt9) * times ;
+      cnt9 = 0 ;
+    }
+    for(int i= 1;; i++){
+      if(N >= pow(6,i))
+      {
+        cnt6++;
+      }
+      else{
+        break;
+      }
+    }
+    if(cnt6 >0){
+      times = N/pow(6,cnt6);
+      ans += times;
+      N -= pow(6,cnt6) * times ;
+      cnt6= 0 ;
+    }
+  }
+  cout << ans + N << endl;
   if (DEBUG){
     std::printf("******debug********\n");
-
+    cout << ans << "  " << N << endl;
     std::printf("******debug********\n");
   }
   return 0 ;

@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -38,14 +37,44 @@ void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
 int N ;
+string S ;
 char str[26];
 std::map<char,int> M ;
 /*******************************/
+int func(string s , string t ){
+  int ans = 0 ;
+  for(char c = 'a' ; c <= 'z' ; c++ ){
+  bool founds = false ;
+  bool foundt = false ;
+    for(int i = 0 ; i < s.length(); i++){
+      if(s[i] == c)
+        founds = true;
+    
+    }
+
+    for(int i = 0 ; i < t.length(); i++){
+      if(t[i] == c)
+        foundt = true;
+    
+    }
+    if(founds && foundt)
+      ans++;
+  }
+  return ans;
+}
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
+  cin >> N >> S ;
+  int ans = 0 ;
+  for(int i =0 ; i < N; i++ ){
+    int tmp = func(S.substr(0,i),S.substr(i));
+    ans = max(tmp,ans);
+  
+  }
+  cout << ans << endl ;
 
   if (DEBUG){
     std::printf("******debug********\n");

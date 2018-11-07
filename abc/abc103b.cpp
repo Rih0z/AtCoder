@@ -9,10 +9,8 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
-
 #define FOR(i , a, b) for(size_t i = a ; i < b ; i++ )
 #define REP(i,b) FOR(i , 0 , b)
 #define RFOR(i,a,b) for(size_t i = a-1 ; i >= b ; i--)
@@ -39,6 +37,7 @@ void perSum(ll *a , ll *sum ,int n);
 /*************Global variable  **************/
 int N ;
 char str[26];
+string S , T ;
 std::map<char,int> M ;
 /*******************************/
 
@@ -46,12 +45,21 @@ int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
+  cin >> S >> T ;
 
+  REP(i,S.length()){
   if (DEBUG){
     std::printf("******debug********\n");
-
+    cout << S << endl;
     std::printf("******debug********\n");
   }
+  if(S.compare(T)==0  ){
+    cout << "Yes" << endl;
+    return 0 ;
+  }
+  S = S.substr(1)+S[0] ;
+  }
+  cout << "No" << endl;
   return 0 ;
 }
 

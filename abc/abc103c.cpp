@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -40,13 +39,21 @@ void perSum(ll *a , ll *sum ,int n);
 int N ;
 char str[26];
 std::map<char,int> M ;
+
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
+  cin >> N ;
+  int a[N ] ;
+  int ans = 0 ;
+  REP(i,N){
+    cin >> a[i] ;
+    ans += a[i] ;
+  }
+  cout << ans - N << endl ;
   if (DEBUG){
     std::printf("******debug********\n");
 

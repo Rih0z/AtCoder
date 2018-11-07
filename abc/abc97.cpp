@@ -10,7 +10,6 @@
 #include<numeric>
 #include<algorithm>
 #include<cmath>
-
 #define DEBUG false
 
 #define FOR(i , a, b) for(size_t i = a ; i < b ; i++ )
@@ -46,7 +45,25 @@ int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
+  cin >> N ;
+  if(N == 1){
+    cout << 1 << endl;
+    return 0 ;
+  }
+  int p ;
+  int ans ;
 
+  for(int i = 2 ; i < 32 ; i++){
+    for(int j = 3 ; j <= 10 ; j++)
+    {
+      if(pow(i,j) <= N)
+      {
+        ans = max((int)(pow(i,j)),ans);
+      }
+    }
+
+  }
+  cout << ans << endl;
   if (DEBUG){
     std::printf("******debug********\n");
 

@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -37,21 +36,33 @@ void printCharArr(char *string);
 void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
-int N ;
+int N,D ;
 char str[26];
 std::map<char,int> M ;
 /*******************************/
-
+int times100(int x ){
+  if(x%100 != 0)
+    return 0 ;
+  return times100(x/100) + 1;
+}
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
-  if (DEBUG){
-    std::printf("******debug********\n");
-
-    std::printf("******debug********\n");
+  cin >> D >> N ;
+  int cnt = 0 ;
+  int ans;
+  for(int x=1 ;; x++){
+    if(times100(x) == D)
+      cnt++;
+    if(cnt == N)
+    {
+      ans = x;
+      cout << ans << endl;
+      return 0;
+    }
   }
+
   return 0 ;
 }
 

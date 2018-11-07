@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -38,6 +37,8 @@ void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
 int N ;
+string S ;
+string ans = "AC";
 char str[26];
 std::map<char,int> M ;
 /*******************************/
@@ -45,8 +46,36 @@ std::map<char,int> M ;
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
+
+
+    char a = 'a';// a~z 97 ~ 123
+    char A = 'A' ;//A~Z  65 ~91
+    char c = 'c' ;
+    char C = 'C' ;
+    printf("a = %d A = %d\n c = %d C = %d\n",a,A,c,C);
+  }
+  int cn = 1000;
+  cin >> S ;
+  if(S[0] != 'A')
+    ans = "WA";
+  for(int i = 2 ; i < S.length()-1 ; i++ )
+  {
+    if(S[i] == 'C'){
+     cn = i ;
+     break;
+    }
+  }
+  if (cn == 1000){
+    ans = "WA";
   }
 
+  for(int i = 1 ; i < S.length() ; i++){
+    if(i != cn && S[i] < 92){
+      ans = "WA";
+      break;
+    } 
+  }
+  cout << ans << endl;
   if (DEBUG){
     std::printf("******debug********\n");
 

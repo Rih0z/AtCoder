@@ -9,7 +9,6 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
 
@@ -40,12 +39,30 @@ void perSum(ll *a , ll *sum ,int n);
 int N ;
 char str[26];
 std::map<char,int> M ;
+int T ;
+int c,t;
+int MAX = 1 << 30 ;
+int ans = MAX;
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
+  cin >> N >> T ;
+  REP(i,N){
+    cin >> c >> t ;
+    if( t <= T )
+    {
+      ans = min(ans,c);
+    }
+  }
+  if(ans != MAX){
+    cout << ans <<endl;
+  }else{
+    cout << "TLE" << endl;
+  }
+
 
   if (DEBUG){
     std::printf("******debug********\n");

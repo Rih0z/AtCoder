@@ -46,13 +46,30 @@ int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
-  if (DEBUG){
-    std::printf("******debug********\n");
-
-    std::printf("******debug********\n");
+  int A,B,C,Y,X ;
+  cin >> A >> B >> C >> X >> Y ;
+  int com ;
+  int ans ; 
+  int comuse;
+  int sep ;
+  int on;
+  if(X>=Y){
+  on = C*X*2 ;
+    com = Y;
+    comuse = (com * C *2 )+ ( (X-com) *A);
+  }else{
+  on = C*Y*2 ;
+    com = X;
+    comuse = (com * C *2)+ ( (Y-com) *B);
   }
-  return 0 ;
+
+
+  sep = (A*X) + (B*Y);
+  ans = min(comuse,sep);
+  ans = min(ans,on);
+  cout << ans <<  endl;
+
+    return 0 ;
 }
 
 //各地点までの部分和を計算する

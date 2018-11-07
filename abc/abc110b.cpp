@@ -9,10 +9,8 @@
 #include<string>
 #include<numeric>
 #include<algorithm>
-#include<cmath>
 
 #define DEBUG false
-
 #define FOR(i , a, b) for(size_t i = a ; i < b ; i++ )
 #define REP(i,b) FOR(i , 0 , b)
 #define RFOR(i,a,b) for(size_t i = a-1 ; i >= b ; i--)
@@ -37,16 +35,48 @@ void printCharArr(char *string);
 void perSum(ll *a , ll *sum ,int n);
 
 /*************Global variable  **************/
-int N ;
+int N,M,X,Y ;
 char str[26];
-std::map<char,int> M ;
 /*******************************/
 
 int main(){
   if (DEBUG){
     std::printf("******debug mode********\n");
   }
-
+  cin >> N >> M >> X >> Y ;
+  int x[N];
+  int y[M];
+  bool o1 = true;
+  bool o2 = true;
+  REP(i,N){
+    cin >> x[i];
+  }
+  int afadsfa ;
+  int j,k;
+  REP(i,M){
+    cin >> y[i];
+  }
+  for(int z = X+1; z <= Y ;z++){
+    REP( j,N){
+      if(x[j] >= z){
+        o1 =false;
+      }
+    }
+    REP(k,M){
+      if(y[k] < z){
+        o2 = false;
+      }
+    }
+    if(o1 && o2){
+      cout << "No War" << endl;
+      return 0 ;
+    }else
+    {
+      o1 = true ;
+      o2 = true ;
+    }
+  }
+  printf("War\n");
   if (DEBUG){
     std::printf("******debug********\n");
 
